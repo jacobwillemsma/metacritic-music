@@ -10,26 +10,23 @@
 		var actionBar = document.getElementsByClassName('actions')[0];
 		var referenceElement = actionBar.children[2];
 		var newButton = document.createElement('a');
-		
+
 		newButton.setAttribute('class', 'button');
 		newButton.setAttribute('href', scoreObject.url);
 		newButton.setAttribute('target', '_blank');
 		newButton.innerText = score;
 
-		if (score >= 60) {
+		if (score > 60) {
 			// Green button
-			/*newButton.setAttribute('background-color', '#66CC33');*/
-			newButton.setAttribute('background-color', 'red');
+			newButton.setAttribute('style', 'background-color:#66CC33; height:90%; min-width:10px');
 			actionBar.insertBefore(newButton, referenceElement);
 		} else if (score >=40) {
 			// Yellow button
-			/*newButton.setAttribute('background-color', '#FFCC33');*/
-			newButton.setAttribute('background-color', 'red');
+			newButton.setAttribute('style', 'background-color:#FFCC33; height:90%; min-width:10px');
 			actionBar.insertBefore(newButton, referenceElement);
 		} else {
 			// Red button
-			/*newButton.setAttribute('background-color', '#FF0000');*/
-			newButton.setAttribute('background-color', 'red');
+			newButton.setAttribute('style', 'background-color:#FF0000; height:90%; min-width:10px');
 			actionBar.insertBefore(newButton, referenceElement);
 		}
 

@@ -1,7 +1,7 @@
 {
-    "name": "Metacritic-Extension",
+    "name": "MetaMusic",
     "version": "1.0.0",
-    "description": ".",
+    "description": "An extension that inserts the metacritic score of the album you're listening to in Google Music.",
     "background": {
         "scripts": ["src/js/background.js"]
     },
@@ -9,11 +9,6 @@
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
         "128": "icons/icon128.png"
-    },
-    "browser_action": {
-        "default_icon":  "icons/icon19.png",
-        "default_title": "Metacritic-Extension",
-        "default_popup": "src/popup.html"
     },
     "permissions": [
         "tabs",
