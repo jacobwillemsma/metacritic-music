@@ -59,8 +59,6 @@
 						}
 						// If we made it here, it means we never found our album.  So just return null.
 					}
-				} else {
-					console.log('Ajax call for whatever reason is failing.  This is a silent failure point for the extension');
 				}
 			});
 	}
