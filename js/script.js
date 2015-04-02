@@ -6,33 +6,20 @@
 	var queryArtist = document.getElementsByClassName('tab-text parent tooltip')[0].innerText;
 
 	function createButton(scoreObject) {
-		var score = scoreObject.score;
-		var actionBar = document.getElementsByClassName('actions')[0];
-		var referenceElement = actionBar.children[2];
-		var newButton = document.createElement('a');
-
-		newButton.setAttribute('class', 'button');
-		newButton.setAttribute('href', scoreObject.url);
-		newButton.setAttribute('target', '_blank');
-		newButton.innerText = score;
-
-		if (score > 60) {
-			// Green button
-			newButton.setAttribute('style', 'background-color:#66CC33; height:90%; min-width:10px');
-			actionBar.insertBefore(newButton, referenceElement);
-		} else if (score >=40) {
-			// Yellow button
-			newButton.setAttribute('style', 'background-color:#FFCC33; height:90%; min-width:10px');
-			actionBar.insertBefore(newButton, referenceElement);
-		} else {
-			// Red button
-			newButton.setAttribute('style', 'background-color:#FF0000; height:90%; min-width:10px');
-			actionBar.insertBefore(newButton, referenceElement);
-		}
+		
 
 	}
 
 	function getScoreFromMetacritic(albumName, albumYear, albumArtist) {
+        var actionBar = document.getElementsByClassName('actions')[0];
+        var referenceElement = actionBar.children[2];
+        var newButton = document.createElement('a');
+        
+        newButton.setAttribute('class', 'button');
+        newButton.innerText = 'M';
+        newButton.setAttribute('style', 'height:90%; min-width:12px');
+        actionBar.insertBefore(newButton, referenceElement);
+        
 		request
 			.post('https://byroredux-metacritic.p.mashape.com/search/album')
 			.send({ title: albumName, max_pages: '2', year_from: albumYear - 1, year_to: albumYear + 1})
@@ -53,11 +40,26 @@
 							albumName = albumName.toLowerCase().replace(/\s/g, '');
 							albumArtist = albumArtist.toLowerCase().replace(/\s/g, '');
 							if (currentAlbumName === albumName && currentArtistName === albumArtist && results[i].score) {
-								// We hit the right album, let's return
-								createButton({ score: results[i].score, url: results[i].url });
+								// We hit the right album, let's update the button.
+                                var score = results[i].score;
+                                var url = results[i].url;
+                                
+                                newButton.setAttribute('href', url);
+                                newButton.setAttribute('target', '_blank');
+                                newButton.innerText = score;
+
+                                if (score > 60) {
+                                    // Green button
+                                    newButton.setAttribute('style', 'background-color:#66CC33; height:90%; min-width:10px');
+                                } else if (score >=40) {
+                                    // Yellow button
+                                    newButton.setAttribute('style', 'background-color:#FFCC33; height:90%; min-width:10px');
+                                } else {
+                                    // Red button
+                                    newButton.setAttribute('style', 'background-color:#FF0000; height:90%; min-width:10px');
+                                }
 							}
 						}
-						// If we made it here, it means we never found our album.  So just return null.
 					}
 				}
 			});
