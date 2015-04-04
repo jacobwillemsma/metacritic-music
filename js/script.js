@@ -1,14 +1,10 @@
 //script.js
-(function() {
+;(function() {
 	var request = window.superagent;
 	var queryName = document.getElementsByClassName('tab-text')[0].innerText;
 	var queryYear = parseInt(document.getElementsByClassName('year')[0].innerText);
 	var queryArtist = document.getElementsByClassName('tab-text parent tooltip')[0].innerText;
-
-	function createButton(scoreObject) {
-		
-
-	}
+	queryName = queryName.replace(/ *\([^)]*\) */g, "");
 
 	function getScoreFromMetacritic(albumName, albumYear, albumArtist) {
         var actionBar = document.getElementsByClassName('actions')[0];

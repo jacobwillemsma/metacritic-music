@@ -1,6 +1,6 @@
 {
     "name": "MetaMusic",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "An extension that inserts the metacritic score of the album you're listening to in Google Music.",
     "background": {
         "scripts": ["js/background.js"]
